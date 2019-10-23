@@ -1,0 +1,2 @@
+# gradle-trunk
+Gradle examples
