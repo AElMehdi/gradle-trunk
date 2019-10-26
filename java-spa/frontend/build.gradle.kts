@@ -22,10 +22,24 @@ task<NpmTask>("npm-install"){
 
   setArgs(listOf("install"))
 }
+
 task<NpmTask>("ng-build") {
   dependsOn("npm-install")
 
-  setArgs(listOf("run-script", "build", "--output-path=build"))
+  setArgs(listOf("run-script", "build"))
 }
 
-tasks.getByName("assemble").dependsOn("ng-build")
+task<NpmTask>("ng-test") {
+  dependsOn("assemble")
+  setArgs(listOf("run-script", "test"))
+}
+
+task<NpmTask>("ng-lint") {
+  dependsOn("ng-build")
+  setArgs(listOf("run-script", "lint"))
+}
+
+tasks.assemble{
+  dependsOn("ng-lint")
+}
+
