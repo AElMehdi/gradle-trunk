@@ -1,1 +1,3 @@
-rootProject.name = "frontend"
+rootProject.name = "java-spa"
+
+include(":frontend")
