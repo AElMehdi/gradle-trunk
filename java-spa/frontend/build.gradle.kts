@@ -2,6 +2,7 @@ import com.moowork.gradle.node.npm.NpmTask
 
 plugins {
   id("base")
+  id("java")
   id("com.github.node-gradle.node") version "2.1.1"
 }
 
@@ -42,4 +43,8 @@ task<NpmTask>("ng-lint") {
 tasks.assemble{
   dependsOn("ng-lint")
 }
+//
+//tasks.test {
+//  dependsOn("ng-test")
+//}
 
