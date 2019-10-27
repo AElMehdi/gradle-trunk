@@ -28,18 +28,19 @@ dependencies {
 
     testImplementation("org.springframework.boot:spring-boot-starter-test")
 
+//  Migrate to kotlin Later on
 //    components {
 //        withModule("org.springframework:spring-beans") {
 //            constraints {
 //                implementation("org.apache.httpcomponents:httpclient:4.5.3") {
 //                    because("previous versions have a bug impacting this application")
 //                }
-////            allVariants {
-////                withDependencyConstraints {
-////                    // Need to patch constraints because snakeyaml is an optional dependency
-////                    this.filter { name == "snakeyaml" }.forEach(action = )
-////                }
-////            }
+//            allVariants {
+//                withDependencyConstraints {
+//                    // Need to patch constraints because snakeyaml is an optional dependency
+//                    this.filter { name == "snakeyaml" }.forEach(action = )
+//                }
+//            }
 //        }
 //    }
 }
