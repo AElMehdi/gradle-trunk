@@ -16,16 +16,15 @@ node {
   download = false
 }
 
-task<NpmTask>("npm-install"){
+tasks.named("npmInstall") {
   inputs.dir("src")
   inputs.file("package.json")
   inputs.file("package-lock.json")
-
-  setArgs(listOf("install"))
+//  setArgs(listOf("install"))
 }
 
 task<NpmTask>("ng-build") {
-  dependsOn("npm-install")
+  dependsOn("npmInstall")
 
   setArgs(listOf("run-script", "build"))
 }
@@ -37,14 +36,20 @@ task<NpmTask>("ng-test") {
 
 task<NpmTask>("ng-lint") {
   dependsOn("ng-build")
-  setArgs(listOf("run-script", "lint"))
+  setArgs(listOf("run-script", "start"))
 }
 
-tasks.assemble{
+
+tasks.assemble {
   dependsOn("ng-lint")
 }
 //
-//tasks.test {
-//  dependsOn("ng-test")
+//task<NpmTask>("ng-run") {
+//  setArgs(listOf("run-script", "start"))
+//  shouldRunAfter(":assemble")
 //}
+////
+////tasks.test {
+////  dependsOn("ng-test")
+////}
 
