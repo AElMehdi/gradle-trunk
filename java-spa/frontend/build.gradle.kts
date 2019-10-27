@@ -36,7 +36,7 @@ task<NpmTask>("ng-test") {
 
 task<NpmTask>("ng-lint") {
   dependsOn("ng-build")
-  setArgs(listOf("run-script", "start"))
+  setArgs(listOf("run-script", "lint"))
 }
 
 
