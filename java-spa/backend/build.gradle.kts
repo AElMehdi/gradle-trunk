@@ -14,6 +14,8 @@ repositories {
 }
 
 dependencies {
+    implementation(project(":frontend"))
+
     // This dependency is used by the application.
     implementation("com.google.guava:guava:28.0-jre")
 
@@ -55,5 +57,5 @@ val test by tasks.getting(Test::class) {
 }
 
 tasks.getByName<BootJar>("bootJar") {
-    getArchiveClassifier()
+    mainClassName = "backend.App"
 }
