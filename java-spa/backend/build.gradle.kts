@@ -59,3 +59,14 @@ val test by tasks.getting(Test::class) {
 tasks.getByName<BootJar>("bootJar") {
     mainClassName = "backend.App"
 }
+
+val webappDir = "${rootProject.projectDir}/frontend/dist"
+println(webappDir)
+
+sourceSets {
+    main {
+        resources {
+            srcDirs("$webappDir")
+        }
+    }
+}

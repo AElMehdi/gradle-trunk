@@ -45,11 +45,11 @@ tasks.assemble {
 }
 
 tasks.jar {
-  doLast {
-    from("dist")
-    into("static")
-  }
+  dependsOn("ng-lint")
+  println("CREATING JAR FILE")
 
+  from("dist")
+  into("static")
 }
 
 //
