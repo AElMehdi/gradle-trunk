@@ -61,7 +61,6 @@ tasks.getByName<BootJar>("bootJar") {
 }
 
 val webappDir = "${rootProject.projectDir}/frontend/dist"
-println(webappDir)
 
 sourceSets {
     main {

@@ -20,7 +20,6 @@ tasks.named("npmInstall") {
   inputs.dir("src")
   inputs.file("package.json")
   inputs.file("package-lock.json")
-//  setArgs(listOf("install"))
 }
 
 task<NpmTask>("ng-build") {
