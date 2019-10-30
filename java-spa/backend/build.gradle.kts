@@ -3,6 +3,7 @@ import org.springframework.boot.gradle.tasks.bundling.BootJar
 plugins {
     java
     application
+    war
 
     id("org.springframework.boot") version "2.0.5.RELEASE"
     id("io.spring.dependency-management") version "1.0.8.RELEASE"
@@ -29,22 +30,6 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web")
 
     testImplementation("org.springframework.boot:spring-boot-starter-test")
-
-//  Migrate to kotlin Later on
-//    components {
-//        withModule("org.springframework:spring-beans") {
-//            constraints {
-//                implementation("org.apache.httpcomponents:httpclient:4.5.3") {
-//                    because("previous versions have a bug impacting this application")
-//                }
-//            allVariants {
-//                withDependencyConstraints {
-//                    // Need to patch constraints because snakeyaml is an optional dependency
-//                    this.filter { name == "snakeyaml" }.forEach(action = )
-//                }
-//            }
-//        }
-//    }
 }
 
 
