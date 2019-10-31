@@ -45,7 +45,6 @@ tasks.assemble {
 
 tasks.jar {
   dependsOn("ng-lint")
-  println("CREATING JAR FILE")
 
   from("dist")
   into("static")

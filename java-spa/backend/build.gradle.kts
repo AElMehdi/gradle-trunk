@@ -45,12 +45,12 @@ tasks.getByName<BootJar>("bootJar") {
     mainClassName = "backend.App"
 }
 
-val webappDir = "${rootProject.projectDir}/frontend/dist"
-
-sourceSets {
-    main {
-        resources {
-            srcDirs("$webappDir")
-        }
-    }
-}
+//val webappDir = "${rootProject.projectDir}/frontend/dist/frontend"
+//
+//sourceSets {
+//    main {
+//        resources {
+//            srcDirs("$webappDir")
+//        }
+//    }
+//}
