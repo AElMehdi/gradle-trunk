@@ -20,7 +20,7 @@ class HelloControllerTest {
 
     @Test
     void should_greet() throws Exception {
-        mvc.perform(get("/"))
+        mvc.perform(get("/api/hello"))
                 .andExpect(status().isOk())
                 .andExpect(content().string("Hello Gradle!"));
     }
