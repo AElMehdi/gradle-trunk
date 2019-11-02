@@ -15,25 +15,28 @@ node {
   version = "10.15.0" // Bug: It constructs bin node file name based on the system arch info (e.g x86.tar.gz) which is not found in the dist server
   download = false
 }
-
-tasks.named("npmInstall") {
+tasks.npmInstall {
   inputs.dir("src")
   inputs.file("package.json")
   inputs.file("package-lock.json")
 }
 
-task<NpmTask>("ng-build") {
+tasks.register("ng-build", NpmTask::class) {
+  println("buil angular task")
+
   dependsOn("npmInstall")
 
   setArgs(listOf("run-script", "build"))
 }
 
-task<NpmTask>("ng-test") {
+tasks.register("ng-test", NpmTask::class) {
   dependsOn("assemble")
   setArgs(listOf("run-script", "test"))
 }
 
-task<NpmTask>("ng-lint") {
+tasks.register("ng-lint", NpmTask::class) {
+  println("linter task")
+
   dependsOn("ng-build")
   setArgs(listOf("run-script", "lint"))
 }
