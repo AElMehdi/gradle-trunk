@@ -43,13 +43,6 @@ tasks.assemble {
   dependsOn("ng-lint")
 }
 
-tasks.jar {
-  dependsOn("ng-lint")
-
-  from("dist")
-  into("static")
-}
-
 //
 //task<NpmTask>("ng-run") {
 //  setArgs(listOf("run-script", "start"))
