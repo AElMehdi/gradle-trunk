@@ -1,8 +1,8 @@
 import com.moowork.gradle.node.npm.NpmTask
 
 plugins {
-  id("base")
-  id("java")
+  base
+  java
   id("com.github.node-gradle.node") version "2.1.1"
 }
 
@@ -38,10 +38,11 @@ task<NpmTask>("ng-lint") {
   setArgs(listOf("run-script", "lint"))
 }
 
-
-tasks.assemble {
-  dependsOn("ng-lint")
+tasks.jar {
+  from("dist/frontend")
+  into("static")
 }
+
 
 //
 //task<NpmTask>("ng-run") {

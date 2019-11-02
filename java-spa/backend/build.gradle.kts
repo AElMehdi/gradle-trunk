@@ -14,7 +14,7 @@ repositories {
 }
 
 dependencies {
-    runtime(project(":frontend"))
+    implementation(project(":frontend"))
 
     implementation("org.springframework.boot:spring-boot-dependencies:2.0.5.RELEASE")
     implementation("org.springframework.boot:spring-boot-starter-web")
@@ -36,12 +36,4 @@ val test by tasks.getting(Test::class) {
 
 tasks.getByName<BootJar>("bootJar") {
     mainClassName = "backend.App"
-}
-
-sourceSets {
-    main {
-        resources {
-            srcDirs("${rootProject.projectDir}/frontend/dist/")
-        }
-    }
 }
