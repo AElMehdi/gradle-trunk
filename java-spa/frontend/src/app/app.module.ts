@@ -8,7 +8,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 
 const appRoutes: Routes = [
-  { path: 'ahlan', component: HelloGradleComponent }];
+  { path: 'gradle', component: HelloGradleComponent }];
 
 
 @NgModule({
