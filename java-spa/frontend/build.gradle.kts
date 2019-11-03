@@ -15,37 +15,43 @@ node {
   version = "10.15.0" // Bug: It constructs bin node file name based on the system arch info (e.g x86.tar.gz) which is not found in the dist server
   download = false
 }
-tasks.npmInstall {
-  inputs.dir("src")
-  inputs.file("package.json")
-  inputs.file("package-lock.json")
+
+tasks {
+
+  val npmCi = register<NpmTask>("npm-ci") {
+    inputs.dir("src")
+    inputs.file("package.json")
+    inputs.file("package-lock.json")
+
+    setArgs(listOf("ci"))
+  }
+
+  val ngBuild = register<NpmTask>("ng-build") {
+    dependsOn(npmCi)
+
+    setArgs(listOf("run-script", "build"))
+  }
+
+
+  val ngLint = register<NpmTask>("ng-lint") {
+    setArgs(listOf("run-script", "lint"))
+  }
+
+  val ngTest = register<NpmTask>("ng-test") {
+    setArgs(listOf("run-script", "test"))
+  }
+
+  check.configure {
+    dependsOn(ngLint)
+    dependsOn(ngTest)
+  }
+
+  jar {
+    from("dist/frontend")
+    into("static")
+  }
+
 }
-
-tasks.register("ng-build", NpmTask::class) {
-  println("buil angular task")
-
-  dependsOn("npmInstall")
-
-  setArgs(listOf("run-script", "build"))
-}
-
-tasks.register("ng-test", NpmTask::class) {
-  dependsOn("assemble")
-  setArgs(listOf("run-script", "test"))
-}
-
-tasks.register("ng-lint", NpmTask::class) {
-  println("linter task")
-
-  dependsOn("ng-build")
-  setArgs(listOf("run-script", "lint"))
-}
-
-tasks.jar {
-  from("dist/frontend")
-  into("static")
-}
-
 
 //
 //task<NpmTask>("ng-run") {
