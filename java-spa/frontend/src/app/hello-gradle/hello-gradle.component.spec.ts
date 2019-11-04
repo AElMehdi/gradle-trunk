@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HelloGradleComponent } from './hello-gradle.component';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 describe('HelloGradleComponent', () => {
   let component: HelloGradleComponent;
@@ -8,7 +9,8 @@ describe('HelloGradleComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ HelloGradleComponent ]
+      declarations: [ HelloGradleComponent ],
+      imports: [ HttpClientModule ]
     })
     .compileComponents();
   }));
