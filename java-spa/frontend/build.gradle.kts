@@ -41,9 +41,9 @@ tasks {
     setArgs(listOf("run-script", "test"))
   }
 
-  check.configure {
+  check {
     dependsOn(ngLint)
-    dependsOn(ngTest)
+//    dependsOn(ngTest)
   }
 
   jar {

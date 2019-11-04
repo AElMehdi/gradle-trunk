@@ -30,10 +30,12 @@ application {
     mainClassName = "backend.App"
 }
 
-tasks.getting(Test::class) {
-    useJUnitPlatform()
-}
+tasks {
+    getting(Test::class) {
+        useJUnitPlatform()
+    }
 
-tasks.getting(BootJar::class) {
-    mainClassName = "backend.App"
+    getting(BootJar::class) {
+        mainClassName = "backend.App"
+    }
 }
