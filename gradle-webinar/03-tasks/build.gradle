@@ -8,3 +8,20 @@
        Hint: http://www.gradle.org/docs/current/dsl/org.gradle.api.Task.html#org.gradle.api.Task:description
     7. Execute `gradle tasks` again.
 */
+def groupTaskName = "Untyped"
+
+task helloWorld {
+   group groupTaskName
+   description "Prints Hello World"
+   doLast {
+      println "Hello world"
+   }
+}
+
+task printDate {
+   group groupTaskName
+   description "Prints the current date"
+   doLast {
+      println new Date().format("yyyyMMdd")
+   }
+}
