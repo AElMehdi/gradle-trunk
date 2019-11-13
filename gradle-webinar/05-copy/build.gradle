@@ -3,3 +3,17 @@
     2. Add a section to the copy task from 1. that also copies all `*.dat` files under `content` and renames them to `*.data`.
        Hint: The rename regex is `"(.*)\\.dat"`.
 */
+
+task copyAll(type: Copy) {
+   into "$buildDir/texts"
+
+   from("content") {
+      include "**/*.txt"
+      include "**/*.dat"
+
+      rename "(.*)\\.dat" , '$1.data '
+   }
+
+   from("images")
+
+}
