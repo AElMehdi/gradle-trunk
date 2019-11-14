@@ -22,6 +22,35 @@ dependencies {
     testImplementation "junit:junit:4.11"
 }
 
+//Configure sourceSets
+sourceSets {
+    main {
+        java {
+            srcDirs = ["java"]
+        }
+    }
+}
+
 jar {
-    // add logic here
+    manifest {
+        attributes("Implementation-Version": version)
+    }
+}
+
+// Added for fun to see the manifest content
+task unjar(type: Copy) {
+    group = 'Build'
+    description = 'Uncompress the jar file'
+
+    dependsOn jar
+
+    def jarFile = file('build/libs/06-java-plugin-1.0.jar')
+    def dest = "${project.buildDir}/uncompressed"
+
+    from zipTree(jarFile)
+    into dest
+}
+
+test {
+    maxParallelForks = (Runtime.runtime.availableProcessors() / 2) + 1
 }
