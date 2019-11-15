@@ -43,7 +43,7 @@ tasks {
 
   check {
     dependsOn(ngLint)
-//    dependsOn(ngTest)
+    dependsOn(ngTest)
   }
 
   jar {
