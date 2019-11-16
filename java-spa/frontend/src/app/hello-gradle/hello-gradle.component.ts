@@ -12,9 +12,9 @@ export class HelloGradleComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.http.get('/api/hello').subscribe(res => {
-      console.log('Im waiting for something :', res);
-    });
+      // this.http.get('/api/hello').subscribe(res => {
+      //   console.log('Im waiting for something :', res);
+      // });
   }
 
 }
