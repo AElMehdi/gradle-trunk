@@ -14,7 +14,7 @@ repositories {
 }
 
 dependencies {
-    implementation(project(":frontend"))
+    runtime(project(":frontend"))
 
     implementation("org.springframework.boot:spring-boot-dependencies:2.0.5.RELEASE")
     implementation("org.springframework.boot:spring-boot-starter-web")
