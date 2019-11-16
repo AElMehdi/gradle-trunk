@@ -25,15 +25,13 @@ describe('AppComponent', () => {
   it(`should have as title 'frontend'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
-    // TODO: Uncomment it later
-    // expect(app.title).toEqual('frontend');
+    expect(app.title).toEqual('frontend');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
-    // TODO: Uncomment it later
-    // expect(compiled.querySelector('.content span').textContent).toContain('frontend app is running!');
+    expect(compiled.querySelector('h1').textContent).toContain('Welcome to my Spring Boot , Gradle, Angular App');
   });
 });
