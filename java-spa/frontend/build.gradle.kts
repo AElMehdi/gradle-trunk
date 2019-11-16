@@ -1,7 +1,6 @@
 import com.moowork.gradle.node.npm.NpmTask
 
 plugins {
-  base
   java
   id("com.moowork.node") version "1.3.1"
 }
@@ -26,11 +25,6 @@ tasks {
     setArgs(listOf("ci"))
   }
 
-  val ngBuild = register<NpmTask>("ng-build") {
-    dependsOn(npmCi)
-
-    setArgs(listOf("run-script", "build"))
-  }
 
 
   val ngLint = register<NpmTask>("ng-lint") {
@@ -41,25 +35,22 @@ tasks {
     setArgs(listOf("run-script", "test"))
   }
 
-  check {
+  val ngBuild = register<NpmTask>("ng-build") {
+    dependsOn(npmCi)
     dependsOn(ngLint)
     dependsOn(ngTest)
+
+    inputs.dir("src")
+    inputs.file("package.json")
+    inputs.file("package-lock.json")
+
+    setArgs(listOf("run-script", "build"))
   }
 
   jar {
-    from("dist/frontend")
-    into("static")
+    dependsOn(ngBuild)
+
+    from("dist")
   }
 
 }
-
-//
-//task<NpmTask>("ng-run") {
-//  setArgs(listOf("run-script", "start"))
-//  shouldRunAfter(":assemble")
-//}
-////
-////tasks.test {
-////  dependsOn("ng-test")
-////}
-
