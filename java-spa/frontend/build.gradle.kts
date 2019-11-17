@@ -28,11 +28,23 @@ tasks {
 
 
   val ngLint = register<NpmTask>("ng-lint") {
+    inputs.dir("src")
+    inputs.file("package.json")
+    inputs.file("package-lock.json")
+
     setArgs(listOf("run-script", "lint"))
+
+    outputs.cacheIf { true }
   }
 
   val ngTest = register<NpmTask>("ng-test") {
+    inputs.dir("src")
+    inputs.file("package.json")
+    inputs.file("package-lock.json")
+
     setArgs(listOf("run-script", "test"))
+
+    outputs.cacheIf { true }
   }
 
   val ngBuild = register<NpmTask>("ng-build") {
@@ -45,6 +57,8 @@ tasks {
     inputs.file("package-lock.json")
 
     setArgs(listOf("run-script", "build"))
+
+    outputs.cacheIf { true }
   }
 
   jar {
