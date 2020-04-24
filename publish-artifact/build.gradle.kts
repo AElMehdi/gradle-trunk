@@ -3,6 +3,13 @@ plugins {
     java
 }
 
+repositories {
+    jcenter()
+}
+
+dependencies {
+    implementation("com.itextpdf:itextpdf:5.0.6")
+}
 
 publishing {
     publications {
