@@ -8,7 +8,7 @@ repositories {
 }
 
 dependencies {
-    implementation("com.itextpdf:itextpdf:5.0.6")
+    implementation("com.itextpdf:itext7-core:7.0.4")
 }
 
 publishing {
