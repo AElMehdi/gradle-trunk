@@ -25,4 +25,8 @@ public class MyPdfWriter {
       document.close();
    }
 
+   public static void main(String[] args) throws FileNotFoundException, DocumentException {
+      generate(args[0]);
+   }
+
 }
