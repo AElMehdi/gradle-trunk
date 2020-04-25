@@ -9,7 +9,7 @@ repositories {
 }
 
 dependencies {
-    implementation("com.itextpdf:itext7-core:7.0.4")
+    implementation("com.itextpdf:itextpdf:5.5.13.1")
 
     testImplementation("org.junit.jupiter:junit-jupiter:5.6.2")
     testCompile("org.assertj:assertj-core:3.11.1")
