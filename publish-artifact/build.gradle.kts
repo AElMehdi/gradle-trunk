@@ -5,10 +5,15 @@ plugins {
 
 repositories {
     jcenter()
+    mavenCentral()
 }
 
 dependencies {
     implementation("com.itextpdf:itext7-core:7.0.4")
+
+    testImplementation("org.junit.jupiter:junit-jupiter:5.6.2")
+    testCompile("org.assertj:assertj-core:3.11.1")
+
 }
 
 publishing {
@@ -24,6 +29,9 @@ publishing {
 }
 
 tasks {
+    test {
+        useJUnitPlatform()
+    }
     jar {
         manifest {
             attributes(
