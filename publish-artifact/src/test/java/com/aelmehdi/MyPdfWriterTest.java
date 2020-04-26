@@ -23,7 +23,7 @@ class MyPdfWriterTest {
 
       File generatedPdf = new File(temp, "myPdf.pdf");
 
-      assertThat(readPdf(generatedPdf.toPath().toString())).contains("Hello");
+      assertThat(readPdf(generatedPdf.toPath().toString())).contains("paragraph");
    }
 
    static String readPdf(String path) throws IOException {
