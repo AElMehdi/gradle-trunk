@@ -26,6 +26,17 @@ class MyPdfWriterTest {
       assertThat(readPdf(generatedPdf.toPath().toString())).contains("paragraph");
    }
 
+   @Test
+   void should_create_dest_folder_if_does_not_exist() throws IOException, DocumentException {
+      String dest = temp + "/newFolder";
+
+      MyPdfWriter.generate(dest);
+
+      File wasCreated = new File(dest);
+
+      assertThat(wasCreated.exists()).isTrue();
+   }
+
    static String readPdf(String path) throws IOException {
       PdfReader reader = new PdfReader(path);
 
