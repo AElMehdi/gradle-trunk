@@ -13,21 +13,14 @@ import com.itextpdf.text.pdf.PdfWriter;
 
 public class MyPdfWriter {
 
-   public static final String DEST = "./target/sasndbox/images/raw_images.pdf";
-
-
    public static void generate(String dest) throws IOException, DocumentException {
-      Document document = new Document(PageSize.A4);
-
-      File file = new File(dest);
-      boolean isCreated = file.mkdir();
-
-      if (isCreated) {
-         PdfWriter.getInstance(document, new FileOutputStream(dest + "/myPdf.pdf"));
-      } else {
-         throw new IOException("Unable to create dest folder: " + dest);
+      if (!createIfNotExist(dest)) {
+         throw new IOException("Unable to create the dest directory: " + dest);
       }
 
+      Document document = new Document(PageSize.A4);
+
+      PdfWriter.getInstance(document, new FileOutputStream(dest + "/myPdf.pdf"));
 
 
       document.open();
@@ -38,6 +31,12 @@ public class MyPdfWriter {
       document.add(Image.getInstance("src/main/resources/ce.png", false));
 
       document.close();
+   }
+
+   static boolean createIfNotExist(String dest) {
+      File dir = new File(dest);
+
+      return dir.exists() || dir.mkdir();
    }
 
    public static void main(String[] args) throws IOException, DocumentException {
