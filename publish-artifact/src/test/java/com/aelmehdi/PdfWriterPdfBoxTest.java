@@ -18,4 +18,11 @@ class PdfWriterPdfBoxTest {
 
       assertThat(new File(temp.getPath() + "/pdfBox.pdf").exists()).isTrue();
    }
+
+   @Test
+   void load_an_existing_pdf_file() throws IOException {
+      String content = PdfWriterPdfBox.load("pdfToChange.pdf");
+
+      assertThat(content).contains("camisa");
+   }
 }
