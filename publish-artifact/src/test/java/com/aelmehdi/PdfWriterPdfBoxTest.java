@@ -15,9 +15,21 @@ class PdfWriterPdfBoxTest {
 
    @Test
    void should_generate_pdf_file() throws IOException {
-      PdfWriterPdfBox.generate(temp.getPath());
+      PdfWriterPdfBox.generate(temp.getPath(), "pdfBox.pdf");
 
       assertThat(new File(temp.getPath() + "/pdfBox.pdf").exists()).isTrue();
+   }
+
+   @Test
+   void should_generate_pdf_file_with_text() throws IOException {
+      String filename = "pdfBoxText.pdf";
+      PdfWriterPdfBox.generate(temp.getPath(), filename);
+
+      String pathname = temp.getPath() + "/" + filename;
+
+      String content = PdfWriterPdfBox.getText(pathname);
+
+      assertThat(content).contains("Hello PDF");
    }
 
    @Test

@@ -2,9 +2,10 @@ package com.aelmehdi;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.URL;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
+import org.apache.pdfbox.pdmodel.PDPageContentStream;
+import org.apache.pdfbox.pdmodel.font.PDType1Font;
 import org.apache.pdfbox.text.PDFTextStripper;
 
 public class PdfWriterPdfBox {
@@ -12,14 +13,38 @@ public class PdfWriterPdfBox {
 
    private static final String PDF_FILE_NAME = "/pdfBox.pdf";
 
-   public static void generate(String dest) throws IOException {
+   public static void generate(String dest, String fileName) throws IOException {
       PDDocument pdDocument = new PDDocument();
-
-      pdDocument.save(dest + PDF_FILE_NAME);
 
       PDPage pdPage = new PDPage();
       pdDocument.addPage(pdPage);
 
+      PDPageContentStream contentStream = new PDPageContentStream(pdDocument, pdPage);
+
+      //Begin the Content stream
+      contentStream.beginText();
+
+      //Setting the font to the Content stream
+      contentStream.setFont(PDType1Font.TIMES_ROMAN, 12);
+
+      //Setting the position for the line
+      contentStream.newLineAtOffset(25, 500);
+
+      String text = "Hello PDF";
+
+      //Adding text in the form of string
+      contentStream.showText(text);
+
+      //Ending the content stream
+      contentStream.endText();
+
+      System.out.println("Content added");
+
+      //Closing the content stream
+      contentStream.close();
+
+      //Saving the document
+      pdDocument.save(dest + "/" + fileName);
       pdDocument.close();
    }
 
@@ -94,7 +119,7 @@ public class PdfWriterPdfBox {
    }
 
    private static PDDocument load(String path) throws IOException {
-      URL pdfFile = PdfWriterPdfBox.class.getClassLoader().getResource(path);
-      return PDDocument.load(new File(pdfFile.getPath()));
+      //URL pdfFile = PdfWriterPdfBox.class.getClassLoader().getResource(path);
+      return PDDocument.load(new File(path));
    }
 }
