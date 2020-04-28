@@ -21,7 +21,7 @@ class MyPdfWriterTest {
       MyPdfWriter.generate(temp.getPath());
 
 
-      File generatedPdf = new File(temp, "myPdf.pdf");
+      File generatedPdf = new File(temp, "pdfWithImages.pdf");
 
       assertThat(readPdf(generatedPdf.toPath().toString())).contains("paragraph");
    }

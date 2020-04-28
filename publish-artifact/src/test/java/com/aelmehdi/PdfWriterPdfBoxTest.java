@@ -25,4 +25,11 @@ class PdfWriterPdfBoxTest {
 
       assertThat(content).contains("camisa");
    }
+
+   @Test
+   void load_an_existing_pdf_file_containing_images() throws IOException {
+      String content = PdfWriterPdfBox.load("pdfWithImages.pdf");
+
+      assertThat(content).contains("Fabricant");
+   }
 }
