@@ -11,6 +11,9 @@ repositories {
 dependencies {
     implementation("com.itextpdf:itextpdf:5.5.13.1")
 
+    implementation("org.apache.pdfbox:pdfbox:2.0.19")
+    implementation("org.apache.pdfbox:fontbox:2.0.19")
+
     testImplementation("org.junit.jupiter:junit-jupiter:5.6.2")
     testCompile("org.assertj:assertj-core:3.11.1")
 
