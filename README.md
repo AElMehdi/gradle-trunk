@@ -1,2 +1,3 @@
 # gradle-trunk
-Gradle examples
+Showcases from the Gradle website, and gradle webinars.
+
